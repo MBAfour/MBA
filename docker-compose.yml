@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - 3307:3306
+    cap_add:
+      - SYS_NICE
+    environment:
+      - MYSQL_DATABASE=mba
+      - MYSQL_ROOT_PASSWORD=mba
+      - MYSQL_USER=mba
+      - MYSQL_PASSWORD=mba
+
+  spring-boot:
+    restart: always
+    image: spring-boot
+    # command: "java -jar ./build/libs/mba-0.0.1-SNAPSHOT.jar"
+    build:
+      context: ./server
+    ports:
+      - 8080:8080
+    volumes:
+      - springdata:/usr/src:rw
+      - ./server/:/server/
+    depends_on:
+      - mysql
+
+  react:
+    build:
+      context: ./client
+    command: ["npm", "start"]
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client/:/client
+      - ./client/node_modules/:/client/node_modules
+    environment:
+      - CI=true
+      - CHOKIDAR_USEPOLLING=true
+    tty: true
+
+volumes:
+  dbdata:
+  springdata:
