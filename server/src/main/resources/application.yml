@@ -42,5 +42,7 @@ logging:
 app:
   jwtTokenValidTime: 604800000
   jwtSecretKey: MbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFour
+  bookApiUrl: https://dapi.kakao.com/v3/search/book #kakao book api url
+  bookApiKey:  #kakao book api key
 
 # logging.level.com.example: info
