@@ -1,0 +1,22 @@
+.footer {
+    height: 150px;
+    margin-top: auto;
+    background-color: rgba(245, 245, 245, 0.733);
+}
+
+.contents {
+    width: 96%;
+    max-width: 1100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    
+}
+
+.title {
+    font-weight: 400;
+    font-size: 20px;
+    color: rgb(66, 66, 66);
+}

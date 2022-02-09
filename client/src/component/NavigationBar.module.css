@@ -1,0 +1,27 @@
+/* nav */
+.nav {
+    margin-top: 50px;
+    top: 80px;
+    left: 0;
+    position: static;
+    background: rgba(233, 233, 233, 0.733);
+    box-sizing: border-box;
+    white-space: nowrap;
+    padding: 10px;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+  }
+  .nav .ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .nav .ul .li {
+    padding: 5px;
+    margin: 0 5px;
+    font-family: "BlackHanSans";
+  }
+  
