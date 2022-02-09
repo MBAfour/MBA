@@ -1,26 +1,25 @@
 package com.mbafour.mba.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.socket.WebSocketHandler;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.*;
 
 // WebSocket 기본 설정
-@RequiredArgsConstructor
 @Configuration
-@EnableWebSocket
-public class WebSockConfig implements WebSocketConfigurer {
-    private final WebSocketHandler webSocketHandler;
+@EnableWebSocketMessageBroker
+public class WebSockConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
         // 해당 endpoint로 handshake가 이루어짐
-        registry.addHandler(webSocketHandler, "/ws/chat").setAllowedOrigins("*");
+        registry.addEndpoint("/ws").setAllowedOrigins("*")    // ws프로토콜 /ws 하위의 모든 uri에서 websocketHandler를 사용한다는 의미
+                .withSockJS();
+    }
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config){
+        config.enableSimpleBroker("/topic");  //메시지 구독하는 요청의 prefix 설정 subscriber
+        config.setApplicationDestinationPrefixes("/app");  //메시지 발행하는 요청의 prefix 설정 publisher
     }
 }
-/*
-* WebSocketHandlerRegistry에 WebSocketHandler의 구현체 등록하기
-* 등록된 Handler는 특정 endpoint("/ws/chat")로 handshake를 완료한 후 맺어진 connection 관리
-* */
+

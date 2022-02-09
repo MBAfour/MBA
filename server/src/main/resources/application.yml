@@ -23,7 +23,7 @@ spring:
 
   jpa:
     show-sql: true
-    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5Dialect    #hibernate.ddl-auto: update
 
   jackson:
     serialization:
@@ -43,6 +43,6 @@ app:
   jwtTokenValidTime: 604800000
   jwtSecretKey: MbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFour
   bookApiUrl: https://dapi.kakao.com/v3/search/book #kakao book api url
-  bookApiKey:  #kakao book api key
+  bookApiKey: 268c5cf70250b079931089515203673d  #kakao book api key
 
 # logging.level.com.example: info
