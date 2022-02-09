@@ -10,6 +10,7 @@ class LoginPage extends Component {
         return (
             <div>
                 <Header />
+                <Footer />
             </div>
         );
     }
