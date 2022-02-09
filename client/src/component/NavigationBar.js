@@ -9,7 +9,7 @@ const NavigationBar = () => {
         <li className={styles.li}>
           <Link to="/">MY PAGE</Link>
         </li>
-        <li>
+        <li className={styles.li}>
           <Link to="/">경매 등록</Link>
         </li>
       </ul>

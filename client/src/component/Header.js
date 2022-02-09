@@ -8,14 +8,14 @@ const Header = () => {
       <header className={styles.header}>
         <ul className={styles.menu}>
           {/*로그인 하지 않았을 때*/}
-          <li>
+          <li className={styles.li}>
             <Link to="/login">LOGIN</Link>
           </li>
-          <li>
+          <li className={styles.li}>
             <Link to="/signup">SIGN UP</Link>
           </li>
           {/*로그인 후*/}
-          <li>
+          <li className={styles.li}>
             <Link to="/logout">LOGOUT</Link>
           </li>
         </ul>
