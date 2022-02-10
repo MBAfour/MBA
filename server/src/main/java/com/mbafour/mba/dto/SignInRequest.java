@@ -3,7 +3,7 @@ package com.mbafour.mba.dto;
 import lombok.Getter;
 
 @Getter
-public class SignInDto {
+public class SignInRequest {
     String studentId;
     String password;
 }

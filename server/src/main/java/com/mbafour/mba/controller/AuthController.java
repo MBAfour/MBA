@@ -20,9 +20,9 @@ public class AuthController {
     private final MemberLoginService memberLoginService;
 
     @PostMapping("/signup")
-    public ApiResult<?> signUpMember(@Valid @RequestBody SignUpDto signUpDto) {
+    public ApiResult<?> signUpMember(@Valid @RequestBody SignUpRequest signUpRequest) {
 
-        boolean signUpResult = memberRegisterService.signUp(signUpDto);
+        boolean signUpResult = memberRegisterService.signUp(signUpRequest);
 
         if(signUpResult == false){
             return ApiResult.ERROR("Student Id is already taken!", HttpStatus.BAD_REQUEST);
@@ -31,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ApiResult<?> signInMember(@Valid @RequestBody SignInDto signInDto) {
-        return ApiResult.OK(memberLoginService.signIn(signInDto));
+    public ApiResult<?> signInMember(@Valid @RequestBody SignInRequest signInRequest) {
+        return ApiResult.OK(memberLoginService.signIn(signInRequest));
     }
 }

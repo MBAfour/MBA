@@ -1,7 +1,7 @@
 package com.mbafour.mba.service;
 
 import com.mbafour.mba.dto.JwtDto;
-import com.mbafour.mba.dto.SignInDto;
+import com.mbafour.mba.dto.SignInRequest;
 import com.mbafour.mba.security.JwtTokenProvider;
 import com.mbafour.mba.security.User;
 import lombok.AllArgsConstructor;
@@ -18,12 +18,12 @@ public class MemberLoginService {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public JwtDto signIn(SignInDto signInDto) {
+    public JwtDto signIn(SignInRequest signInRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        signInDto.getStudentId(),
-                        signInDto.getPassword()
+                        signInRequest.getStudentId(),
+                        signInRequest.getPassword()
                 )
         );
 
