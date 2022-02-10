@@ -35,4 +35,9 @@ public class BookController {
     public ApiResult<?> bookList(@PathVariable int pageNum) {
         return ApiResult.OK(bookStatusService.findAllBookByPageNum(pageNum));
     }
+
+    @GetMapping("/detail/{bookId}")
+    public ApiResult<?> bookDetail(@PathVariable Long bookId) {
+        return ApiResult.OK(bookStatusService.findBook(bookId));
+    }
 }

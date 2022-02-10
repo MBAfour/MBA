@@ -40,5 +40,23 @@ public class BookStatusService {
         return new PageImpl<>(bookDtoList, pageable, bookEntityPage.getTotalElements());
     }
 
+    public BookDto findBook(Long bookId) {
+        BookEntity bookEntity = bookRepository.findById(bookId).get();
+        return BookDto.builder()
+                .title(bookEntity.getTitle())
+                .author(bookEntity.getAuthor())
+                .publisher(bookEntity.getPublisher())
+                .status(bookEntity.getStatus())
+                .lectureName(bookEntity.getLectureName())
+                .professorName(bookEntity.getProfessorName())
+                .increasePrice(bookEntity.getIncreasePrice())
+                .rowPrice(bookEntity.getRowPrice())
+                .startDay(bookEntity.getStartDay())
+                .endDay(bookEntity.getEndDay())
+                .thumbnail(bookEntity.getThumbnail())
+                .sellerId(bookEntity.getSeller().getId())
+                .build();
+    }
+
 
 }
