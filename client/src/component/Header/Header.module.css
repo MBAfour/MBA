@@ -35,4 +35,10 @@
     text-decoration: none;
     color: black;
   }
+
+  .btn {
+    background-color: white;
+    padding: 5px 7px 5px 7px;
+    border-radius: 3px;
+  }
   
