@@ -5,7 +5,7 @@ import Logo from '../component/Header/Logo'
 import Footer from '../component/Footer/Footer'
 import NavigationBar from '../component/Header/NavigationBar'
 
-class SignupPage extends Component {
+class SigninPage extends Component {
     render() {
         return (
             <div>
@@ -18,4 +18,4 @@ class SignupPage extends Component {
     }
 }
 
-export default SignupPage;
+export default SigninPage;

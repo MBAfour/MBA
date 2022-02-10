@@ -24,6 +24,10 @@
     margin: 0 5px;
     font-size: 1.2em;
     font-family: "BlackHanSans";
+    color: black;
+  }
+
+  .link {
     text-decoration: none;
     color: black;
   }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import Header from '../component/Header'
-import Logo from '../component/Logo'
-import NavigationBar from '../component/NavigationBar'
-import Footer from '../component/Footer'
+import Header from '../component/Header/Header'
+import Logo from '../component/Header/Logo'
+import NavigationBar from '../component/Header/NavigationBar'
+import Footer from '../component/Footer/Footer'
 import SimpleSlider from '../component/SimpleSlider'
 import Home from '../component/Home'
 
@@ -15,7 +15,9 @@ class Homepage extends Component {
                 <Logo />
                 <NavigationBar />
                 <SimpleSlider />
-                <Home />
+                <Home>
+                    
+                </Home>
                 <Footer />
             </div>
         );
