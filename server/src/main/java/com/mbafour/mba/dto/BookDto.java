@@ -1,25 +1,17 @@
-package com.mbafour.mba.domain.entity;
+package com.mbafour.mba.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "book")
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookEntity {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
-
+public class BookDto {
     private String title;
     private String author;
     private String publisher;
@@ -31,8 +23,5 @@ public class BookEntity {
     private Date startDay;
     private Date endDay;
     private String thumbnail;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seller_id")
-    private MemberEntity seller;
+    private Long sellerId;
 }
