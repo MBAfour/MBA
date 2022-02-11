@@ -33,7 +33,7 @@ public class BookController {
 
     @GetMapping("/{pageNum}")
     public ApiResult<?> bookList(@PathVariable int pageNum) {
-        return ApiResult.OK(bookStatusService.findAllBookByPageNum(pageNum));
+        return ApiResult.OK(bookStatusService.findAllBookByPageNum(pageNum - 1));
     }
 
     @GetMapping("/detail/{bookId}")
