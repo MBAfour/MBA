@@ -1,16 +1,14 @@
 package com.mbafour.mba.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.mbafour.mba.domain.entity.BookEntity;
+import lombok.*;
 
 import java.util.Date;
 
+import static org.springframework.beans.BeanUtils.copyProperties;
+
 @Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
 public class BookDto {
     private String title;
     private String author;
@@ -24,4 +22,9 @@ public class BookDto {
     private Date endDay;
     private String thumbnail;
     private Long sellerId;
+
+    public BookDto(BookEntity bookEntity) {
+        copyProperties(bookEntity, this);
+        this.sellerId = bookEntity.getSeller().getId();
+    }
 }

@@ -1,15 +1,25 @@
 package com.mbafour.mba.controller;
 
+import com.mbafour.mba.domain.entity.BookEntity;
 import com.mbafour.mba.dto.ApiResult;
+import com.mbafour.mba.dto.BookDto;
+import com.mbafour.mba.dto.BookInfoDto;
 import com.mbafour.mba.dto.BookRequest;
 import com.mbafour.mba.service.BookOpenApiService;
 import com.mbafour.mba.service.BookRegisterService;
 import com.mbafour.mba.service.BookStatusService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Controller
 @ResponseBody
@@ -22,22 +32,30 @@ public class BookController {
     BookStatusService bookStatusService;
 
     @GetMapping("/info/search")
-    public ApiResult<?> bookInfoSearch(@RequestParam String query) {
+    public ApiResult<List<BookInfoDto>> bookInfoSearch(@RequestParam String query) {
         return ApiResult.OK(bookOpenApiService.getByTitle(query));
     }
 
     @PostMapping("")
-    public ApiResult<?> bookAdd(HttpServletRequest request, @RequestBody BookRequest bookRequest) {
-        return ApiResult.OK(bookRegisterService.addBook(request, bookRequest));
+    public ApiResult<BookDto> bookAdd(HttpServletRequest request, @RequestBody BookRequest bookRequest) {
+        return ApiResult.OK(new BookDto(bookRegisterService.addBook(request, bookRequest)));
     }
 
     @GetMapping("/{pageNum}")
-    public ApiResult<?> bookList(@PathVariable int pageNum) {
-        return ApiResult.OK(bookStatusService.findAllBookByPageNum(pageNum - 1));
+    public ApiResult<Page<BookDto>> bookList(@PathVariable int pageNum) {
+        Page<BookEntity> bookEntityPage = bookStatusService.findAllBookByPage(pageNum - 1);
+        return ApiResult.OK(
+                new PageImpl<>(
+                        bookEntityPage.stream()
+                        .map(bookEntity -> new BookDto(bookEntity)).collect((toList())),
+                        PageRequest.of(pageNum, 10, Sort.by("id").descending()),
+                        bookEntityPage.getTotalElements()
+                )
+        );
     }
 
     @GetMapping("/detail/{bookId}")
-    public ApiResult<?> bookDetail(@PathVariable Long bookId) {
-        return ApiResult.OK(bookStatusService.findBook(bookId));
+    public ApiResult<BookDto> bookDetail(@PathVariable Long bookId) {
+        return ApiResult.OK(new BookDto(bookStatusService.findBook(bookId)));
     }
 }
