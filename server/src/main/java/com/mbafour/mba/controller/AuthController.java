@@ -21,13 +21,11 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ApiResult<?> signUpMember(@Valid @RequestBody SignUpRequest signUpRequest) {
-
-        boolean signUpResult = memberRegisterService.signUp(signUpRequest);
-
-        if(signUpResult == false){
-            return ApiResult.ERROR("Student Id is already taken!", HttpStatus.BAD_REQUEST);
+        try{
+            return ApiResult.OK(new MemberDto(memberRegisterService.signUp(signUpRequest)));
+        } catch (Exception e){
+            return ApiResult.ERROR(e,HttpStatus.BAD_REQUEST);
         }
-        return ApiResult.OK("Sign Up successful!");
     }
 
     @PostMapping("/signin")

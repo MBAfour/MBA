@@ -4,6 +4,7 @@ import com.mbafour.mba.domain.entity.MemberAuthority;
 import com.mbafour.mba.domain.entity.MemberEntity;
 import com.mbafour.mba.domain.repository.MemberRepository;
 import com.mbafour.mba.dto.SignUpRequest;
+import com.mbafour.mba.exception.AlreadyExistStudentIdException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,12 @@ public class MemberRegisterService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public boolean signUp(SignUpRequest signUpRequest) {
+    public MemberEntity signUp(SignUpRequest signUpRequest) throws Exception {
 
         if(memberRepository.existsByStudentId(signUpRequest.getStudentId())) {
-            return false;
+            throw new AlreadyExistStudentIdException();
         }
+
         MemberEntity memberEntity = MemberEntity.builder()
                 .studentId(signUpRequest.getStudentId())
                 .password(passwordEncoder.encode(signUpRequest.getPassword()))
@@ -28,7 +30,7 @@ public class MemberRegisterService {
                 .phone(signUpRequest.getPhone())
                 .memberAuthority(MemberAuthority.ROLE_USER)
                 .build();
-        memberRepository.save(memberEntity);
-        return true;
+
+        return memberRepository.save(memberEntity);
     }
 }

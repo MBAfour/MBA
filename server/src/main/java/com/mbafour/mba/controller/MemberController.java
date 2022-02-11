@@ -1,6 +1,7 @@
 package com.mbafour.mba.controller;
 
 import com.mbafour.mba.dto.ApiResult;
+import com.mbafour.mba.dto.MemberDto;
 import com.mbafour.mba.service.MemberStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,6 @@ public class MemberController {
 
     @GetMapping(value= "/status")
     public ApiResult<?> memberStatus(HttpServletRequest request){
-        return ApiResult.OK(memberStatusService.getStatus(request));
+        return ApiResult.OK(new MemberDto(memberStatusService.getStatus(request)));
     }
 }
