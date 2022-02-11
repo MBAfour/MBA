@@ -6,6 +6,7 @@ import com.mbafour.mba.domain.entity.MemberEntity;
 import com.mbafour.mba.domain.repository.AuctionRepository;
 import com.mbafour.mba.domain.repository.BookRepository;
 import com.mbafour.mba.dto.AuctionRequest;
+import com.mbafour.mba.exception.LowBidPriceException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class AuctionBidService {
     private final BookRepository bookRepository;
     private final AuctionRepository auctionRepository;
 
-    public boolean modifyAuction(HttpServletRequest request, Long bookId, AuctionRequest auctionRequest) {
+    public AuctionEntity modifyAuction(HttpServletRequest request, Long bookId, AuctionRequest auctionRequest) throws Exception {
 
         BookEntity bookEntity = bookRepository.findById(bookId).get();
         MemberEntity memberEntity = memberStatusService.getStatus(request);
@@ -30,7 +31,7 @@ public class AuctionBidService {
             AuctionEntity auctionEntity = auctionRepository.findByBook(bookEntity).get();
 
             if(auctionEntity.getHighPrice() >= auctionRequest.getBidPrice()){
-                return false;
+                throw new LowBidPriceException();
             }
 
             auctionEntity = AuctionEntity.builder()
@@ -38,19 +39,20 @@ public class AuctionBidService {
                     .highPrice(auctionRequest.getBidPrice())
                     .book(bookEntity)
                     .bidder(memberEntity).build();
-            auctionRepository.save(auctionEntity);
-            return true;
+
+            return auctionRepository.save(auctionEntity);
         }
 
         //이전에 경매한 기록이 없을때
         if(bookEntity.getRowPrice() >= auctionRequest.getBidPrice()){
-            return false;
+            throw new LowBidPriceException();
         }
+
         AuctionEntity auctionEntity = AuctionEntity.builder()
                 .highPrice(auctionRequest.getBidPrice())
                 .book(bookEntity)
                 .bidder(memberEntity).build();
-        auctionRepository.save(auctionEntity);
-        return true;
+
+        return auctionRepository.save(auctionEntity);
     }
 }
