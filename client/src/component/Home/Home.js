@@ -46,12 +46,10 @@ class Home extends Component {
     console.log(ItemList);
     return (
       <div className={styles.main}>
-      <div className={styles.contents}>
-        <h3>상품 목록</h3>
-        <div>
+      <div className={styles.contents}>상품 목록</div>
+        <div className={styles.itemPage}>
         <Item Itemcard={ItemList}/>
         </div>
-      </div>
     </div>
     );
   }
