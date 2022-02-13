@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './Home.module.css'
 import axios from 'axios';
 import Item from '../../Item/Item';
+import _ from "../../config/env";
 
 //데이터를 주고 받고 저장하며, Item.js와 ItemCard.js의
 //데이터 변화를 연결시켜주는 중심 컴포넌트
@@ -16,9 +17,9 @@ class Home extends Component {
   loadItem = async () => {
     // Json Data 불러오기
     axios // axios를 이용해 json을 가져온다음
-      .get("http://localhost:8080/book/1", {
+      .get(_.SERVER_URL + "/book/1", {
         headers: {
-          Authorization : `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ0NzE4Njg5LCJleHAiOjE2NDUzMjM0ODl9.7OrR4KA9z9o2kZU0-RLLlJCtxesO-P-E3yYs6I7JYe4`
+          Authorization: "Bearer " + localStorage.getItem("mba-token"),
         }
       })
       .then(({ data }) => {
