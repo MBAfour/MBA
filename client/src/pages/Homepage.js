@@ -5,7 +5,7 @@ import Logo from '../component/Header/Logo'
 import NavigationBar from '../component/Header/NavigationBar'
 import Footer from '../component/Footer/Footer'
 import SimpleSlider from '../component/SimpleSlider'
-import Home from '../component/Home'
+import Home from '../component/Home/Home'
 
 class Homepage extends Component {
     render() {
@@ -15,9 +15,7 @@ class Homepage extends Component {
                 <Logo />
                 <NavigationBar />
                 <SimpleSlider />
-                <Home>
-                    
-                </Home>
+                <Home />
                 <Footer />
             </div>
         );

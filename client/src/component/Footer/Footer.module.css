@@ -16,7 +16,9 @@
 }
 
 .title {
-    font-size:22px;
+    font-size:18px;
     color: rgb(78, 78, 78);
-    font-family: 'GongGothicLight';
+    font-family: 'MinSans-Medium';
+    align-items: center;
+    justify-content: center;
 }
