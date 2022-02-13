@@ -10,8 +10,8 @@ function ItemCard({ key, thumbnail, title, rowPrice, startDay, endDay }) {
     return (
         <li className={styles.item_Card} key={key}>
             <img src={thumbnail} className={styles.item_Img} alt="" />
-            <p>
-                <span className={styles.item_title}>{title}</span>
+            <p className={styles.item_title}>
+                <span>{title}</span>
             </p>
             <p className={styles.item_rowPrice}>하한가 : {rowPrice}</p>
             <p className={styles.item_startDay}>시작일 : {startDay}</p>

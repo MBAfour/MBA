@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Home.module.css'
 import axios from 'axios';
-import Item from '../../Item/Item';
+import Item from '../Item/Item';
 import _ from "../../config/env";
 
 //데이터를 주고 받고 저장하며, Item.js와 ItemCard.js의
@@ -47,11 +47,9 @@ class Home extends Component {
     console.log(ItemList);
     return (
       <div className={styles.main}>
-      <div className={styles.contents}>상품 목록</div>
-        <div className={styles.itemPage}>
+        <div className={styles.contents}>상품 목록</div>
         <Item Itemcard={ItemList}/>
-        </div>
-    </div>
+      </div>
     );
   }
 }

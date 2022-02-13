@@ -19,7 +19,7 @@ class Item extends Component {
   render() {
     const { Itemcard } = this.props;
     return (
-      <ul className={styles.itemview}>
+      <ul className={styles.item_view}>
         {Itemcard &&
           Itemcard.map((itemdata, insertIndex) => {
             return (
