@@ -10,6 +10,7 @@ import static org.springframework.beans.BeanUtils.copyProperties;
 @Getter
 @Setter
 public class BookDto {
+    private Long id;
     private String title;
     private String author;
     private String publisher;
