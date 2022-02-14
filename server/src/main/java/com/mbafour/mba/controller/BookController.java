@@ -48,10 +48,15 @@ public class BookController {
                 new PageImpl<>(
                         bookEntityPage.stream()
                         .map(bookEntity -> new BookDto(bookEntity)).collect((toList())),
-                        PageRequest.of(pageNum, 10, Sort.by("id").descending()),
+                        PageRequest.of(pageNum, 6, Sort.by("id").descending()),
                         bookEntityPage.getTotalElements()
                 )
         );
+    }
+
+    @GetMapping("/all")
+    public ApiResult<List<BookDto>> bookAllList() {
+        return ApiResult.OK(bookStatusService.findAllBook().stream().map(bookEntity -> new BookDto(bookEntity)).collect((toList())));
     }
 
     @GetMapping("/detail/{bookId}")
