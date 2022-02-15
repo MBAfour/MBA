@@ -19,6 +19,7 @@ public class BookDto {
     private String professorName;
     private Long increasePrice;
     private Long rowPrice;
+    private Long highPrice;
     private Date startDay;
     private Date endDay;
     private String thumbnail;
@@ -27,5 +28,6 @@ public class BookDto {
     public BookDto(BookEntity bookEntity) {
         copyProperties(bookEntity, this);
         this.sellerId = bookEntity.getSeller().getId();
+        this.highPrice = bookEntity.getAuctionEntity().getHighPrice();
     }
 }

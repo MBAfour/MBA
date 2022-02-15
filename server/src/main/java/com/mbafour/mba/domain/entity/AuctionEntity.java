@@ -18,12 +18,7 @@ public class AuctionEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-
     private Long highPrice;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id")
-    private BookEntity book;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bidder_id")

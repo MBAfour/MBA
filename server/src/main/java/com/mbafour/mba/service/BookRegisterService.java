@@ -1,5 +1,6 @@
 package com.mbafour.mba.service;
 
+import com.mbafour.mba.domain.entity.AuctionEntity;
 import com.mbafour.mba.domain.entity.BookEntity;
 import com.mbafour.mba.domain.repository.BookRepository;
 import com.mbafour.mba.dto.BookRequest;
@@ -14,8 +15,11 @@ public class BookRegisterService {
 
     private final BookRepository bookRepository;
     private final MemberStatusService memberStatusService;
+    private final AuctionRegisterService auctionRegisterService;
 
     public BookEntity addBook(HttpServletRequest request, BookRequest bookRequest){
+
+        AuctionEntity auctionEntity = auctionRegisterService.addAuction(bookRequest.getRowPrice(), memberStatusService.getStatus(request));
 
         BookEntity bookEntity = BookEntity.builder()
                 .title(bookRequest.getTitle())
@@ -29,6 +33,7 @@ public class BookRegisterService {
                 .startDay(bookRequest.getStartDay())
                 .endDay(bookRequest.getEndDay())
                 .thumbnail(bookRequest.getThumbnail())
+                .auctionEntity(auctionEntity)
                 .seller(memberStatusService.getStatus(request))
                 .build();
 

@@ -32,6 +32,10 @@ public class BookEntity {
     private Date endDay;
     private String thumbnail;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "auction_id")
+    private AuctionEntity auctionEntity;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
     private MemberEntity seller;
