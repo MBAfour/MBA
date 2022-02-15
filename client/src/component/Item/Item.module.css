@@ -3,3 +3,8 @@
     max-width: 1100px;
     margin: 60px auto 80px auto;
 }
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}

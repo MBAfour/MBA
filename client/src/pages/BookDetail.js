@@ -5,13 +5,11 @@ import Header from '../component/Header/Header'
 import Logo from '../component/Header/Logo'
 import Footer from '../component/Footer/Footer'
 import NavigationBar from '../component/Header/NavigationBar'
-import DetailBody from '../detailpage/Detail'
+import DetailBody from '../component/Detail/Detail'
 
 
 class BookDetail extends Component {
     
-    
-
     render() {
         return (
             <div>
@@ -20,7 +18,6 @@ class BookDetail extends Component {
                 <NavigationBar />
                 <DetailBody />
                 <Footer />
-                
             </div>
         );
     }
