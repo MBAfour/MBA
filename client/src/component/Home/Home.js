@@ -17,7 +17,7 @@ const Home = () => {
     async function fetchData() {
       setLoading(true);
       const response = await axios
-      .get("http://localhost:8080/book/all", {
+      .get(_.SERVER_URL + "/book/all", {
         headers: {
           Authorization : "Bearer " + localStorage.getItem("mba-token"), 
         }

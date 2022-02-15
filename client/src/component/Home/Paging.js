@@ -11,6 +11,7 @@ const PageUl = styled.ul`
 
 const PageLi = styled.li`
   display: inline-block;
+  cursor:pointer
 `;
 
 const PageSpan = styled.span`

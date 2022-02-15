@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DetailBody from './DetailCard';
 import {useParams} from 'react-router-dom';
+import _ from "../../config/env";
 
 const Book = () => {
   
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const {bookId} = useParams(); 
+
   const Get = () => {
     axios  
-    .get(`http://localhost:8080/book/detail/${bookId}`, {
+    .get(_.SERVER_URL + `/book/detail/${bookId}`, {
       headers: {
         Authorization : "Bearer " + localStorage.getItem("mba-token"), 
       }

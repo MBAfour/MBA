@@ -7,6 +7,7 @@ import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
 import Mypage from "./pages/Mypage";
 import BookDetail from './pages/BookDetail';
+import ItemCard from './component/Item/ItemCard';
 
 //USE react-router-dom version 6
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/book/detail/:bookId" element={<BookDetail />} />
+          <Route path="/book/detail/:id" element={<ItemCard />} />
         </Routes>
       </>
     );
