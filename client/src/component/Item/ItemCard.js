@@ -6,9 +6,9 @@ import styles from './ItemCard.module.css'
 
 //key는 각 상품마다 고유의 값으로 지정
 //이미지 URL, 상품명, 하한가, 시작 시간, 남은 시간을 넣어줄 변수들을 각각의 자리에 지정
-function ItemCard({ key, thumbnail, title, rowPrice, startDay, endDay }) {
+function ItemCard({ id, thumbnail, title, rowPrice, startDay, endDay }) {
     return (
-        <li className={styles.item_Card} key={key}>
+        <li className={styles.item_Card} key={id}>
             <img src={thumbnail} className={styles.item_Img} alt="" />
             <p className={styles.item_title}>
                 <span>{title}</span>
