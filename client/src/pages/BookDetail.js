@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
 import Header from '../component/Header/Header'
 import Logo from '../component/Header/Logo'
 import Footer from '../component/Footer/Footer'

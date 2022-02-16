@@ -14,6 +14,7 @@ import ItemCard from './ItemCard';
 //map()을 사용해 여러개의 데이터를 순차적으로 return
 
 const Item = ({item, loading}) => {
+
   return (
     <>
     {
@@ -22,7 +23,7 @@ const Item = ({item, loading}) => {
     }
     <ul className={styles.item_view}>
       { item &&
-      item.map((item) => {
+        item.map((item) => {
           return (
             <Link className={styles.link} to={`/book/detail/${item.id}` }>
             <ItemCard
@@ -36,7 +37,7 @@ const Item = ({item, loading}) => {
             </Link>
           );
         })}
-    </ul>
+      </ul>
     </>
   );  
 }
