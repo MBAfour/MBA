@@ -1,3 +1,6 @@
+#server:
+#  port: 8081
+
 devtools:
   livereload:
     enabled: true
@@ -11,9 +14,9 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    url: jdbc:mysql://localhost:3306/mba?serverTimezone=Asia/Seoul # 자신의 url
+    url: jdbc:mysql://localhost:3306/mba?useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false    # 자신의 url
     username: root # 자신의 mysql username
-    password: root # 자신의 mysql password
+    password: 0524 # 자신의 mysql password
 
     #docker
     #url: jdbc:mysql://mysql:3306/mba?serverTimezone=UTC&characterEncoding=UTF-8
@@ -44,6 +47,10 @@ app:
   jwtTokenValidTime: 604800000
   jwtSecretKey: MbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFourMbaFour
   bookApiUrl: https://dapi.kakao.com/v3/search/book #kakao book api url
+#<<<<<<< Updated upstream
   bookApiKey: 1368e554ccbc920aa405ea210462d0eb
+#=======
+#  bookApiKey: 268c5cf70250b079931089515203673d #kakao book api key
+#>>>>>>> Stashed changes
 
 # logging.level.com.example: info

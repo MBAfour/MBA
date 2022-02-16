@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from '../component/Header/Header'
 import Logo from '../component/Header/Logo'
+<<<<<<< Updated upstream
 import LoginProcess from '../service/transaction/login_process'
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
@@ -84,5 +85,22 @@ const SigninPage = () => {
     </>
   );
 };
+=======
+import Footer from '../component/Footer/Footer'
+import NavigationBar from '../component/Header/NavigationBar'
+
+class SigninPage extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Logo />
+        <NavigationBar />
+        <Footer />
+      </div>
+    );
+  }
+}
+>>>>>>> Stashed changes
 
 export default SigninPage;

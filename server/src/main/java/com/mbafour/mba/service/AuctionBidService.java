@@ -45,7 +45,7 @@ public class AuctionBidService {
 
         //이전에 경매한 기록이 없을때
         if(bookEntity.getRowPrice() >= auctionRequest.getBidPrice()){
-            throw new LowBidPriceException();
+            throw new LowBidPriceException();   //Q. 에러를 throw하면, backend & frontend에서 어떻게 처리해?
         }
 
         AuctionEntity auctionEntity = AuctionEntity.builder()
