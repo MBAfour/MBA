@@ -1,27 +1,62 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import styled from "styled-components";
+import BidPrice from './BidPrice';
+import axios from 'axios';
+
 
 const TopBody = (props) => {
- 
-    const info = props.data;
-    console.log(info);
 
-    const title = info.title;
-    const publisher = info.publisher;
-    const author = info.author;
-    const row_price = info.rowPrice;
-    const increase_price = info.increasePrice;
-    const thumbnail = info.thumbnail;
-    const status = info.status;
-    const lecture_name = info.lectureName;
-    const professor_name = info.professorName;
-    const location = info.location;
-    const seller_id = info.sellerId;
-    const start = info.start;
-    const end_day = info.endDay;
+    const id = props.id;
+    const title = props.title;
+    const publisher = props.publisher;
+    const author = props.author;
+    const row_price = props.row_price;
+    const increase_price = props.increase_price;
+    const thumbnail = props.thumbnail;
+    const status = props.status;
+    const lecture_name = props.lecture_name;
+    const professor_name = props.professor_name;
+    const seller_id = props.seller_id;
+    const start = props.start;
+    const end_day = props.end_day;
+    const high_price = props.high_price;
+
+    const [price, setPrice] = useState(0);  // 자식으로 부터 high_price를 전달받기 위함
+
+    useEffect(() => {
+       if(high_price != 'undefined' && high_price != null){
+            setPrice(high_price);
+       }
+   }, [high_price])
+
+    const getPrice = (price) => {
+        setPrice(price);
+    }
+
+    const Bid = () => {             // 책 id로 해당 책에 입찰 정보 가져옴
+        axios
+        .patch(`http://localhost:8080/auction/${id}`, {
+          "bidPrice" : price
+        }, {
+          headers: {
+            Authorization : "Bearer " + localStorage.getItem("mba-token"), 
+          }
+        }
+        )
+        .then((res) => {
+            if(res.data.success){
+                console.log(res.data);
+                window.location.reload();
+                alert("응찰 성공.");
+            } else{
+                alert("응찰 실패: 더 높은 금액으로 입찰해주세요.");;
+            }
+        })
+        ;
+    }
 
     return (
-        <div style={{width:"1024px", height :"490px", margin:"0 auto"}}>
+        <div style={{width:"1024px", height :"560px", margin:"0 auto"}}>
             <ProductInfo>
                 <ImageBox>
                     <img style={{width:"428px", height:"428px"}} src={thumbnail} alt="이미지"/>
@@ -34,14 +69,9 @@ const TopBody = (props) => {
                     <Grayinfo>
                         <GrayLeft>
                             <GrayBox>            
-                                <Num>남은시간: </Num>
+                                <Num>남은시간: {end_day}</Num>
                             </GrayBox>
                         </GrayLeft>
-                        <div>
-                            <GrayBox>                       
-                                판매자:&nbsp;<SellerBtn> {seller_id}</SellerBtn>
-                            </GrayBox>
-                        </div>
                     </Grayinfo>
                     <StateInfo>
                         <div style={{display:"flex", marginBottom:"20px"}}>
@@ -58,19 +88,32 @@ const TopBody = (props) => {
                             <ListName>강의교수</ListName>
                             <ListValue>{professor_name}</ListValue>
                         </div>
-                        <div style={{display:"flex", marginBottom:"34px"}}>
+                        <div style={{display:"flex", marginBottom:"20px"}}>
                             <ListName>시작가 / 증액가</ListName>
                             <ListValueLocation>
                                 {row_price}원 / {increase_price}원
                             </ListValueLocation>
                         </div>
+                        <div style={{display:"flex", marginBottom:"24px"}}>
+                            <ListName>현재가</ListName>
+                            <BidPrice
+                                increase_price = {increase_price}
+                                high_price = {props.high_price}
+                                price = {price}
+                                getPrice = {getPrice}
+                            />
+                        </div>
                     </StateInfo>
                     <ButtonInfo>
                         <Button>위시리스트</Button>
                         <Button2>채팅하기</Button2>
-                        <Button3>응찰하기</Button3>
+                        <Button3 onClick={Bid}>
+                            응찰하기
+                        </Button3>
+                   
                     </ButtonInfo>
                 </Info>
+                
             </ProductInfo>
         </div>
     )
@@ -92,7 +135,7 @@ const Info = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+  
 `;
 
 const TitleInfo = styled.div`
@@ -220,6 +263,9 @@ const Button = styled.button`
     line-height: 20.7px;
     margin: 0px 10px 0px 40px;
     border-radius: 22px;
+    &:hover {
+        box-shadow: 1px 1px 20px #ddd;
+    }
 `;
 
 const Button2 = styled.button`
@@ -235,6 +281,9 @@ const Button2 = styled.button`
     line-height: 20.7px;
     margin-right: 10px;
     border-radius: 22px;
+    &:hover {
+        box-shadow: 1px 1px 20px #ddd;
+    }
 `;
 
 const Button3 = styled.button`
@@ -249,6 +298,9 @@ const Button3 = styled.button`
     font-weight: 600;
     line-height: 20.7px;
     border-radius: 22px;
+    &:hover {
+        box-shadow: 1px 1px 20px #ddd;
+    }
 `;
 
 const Btngap = styled.span`
