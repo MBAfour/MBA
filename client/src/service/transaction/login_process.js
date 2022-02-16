@@ -40,6 +40,7 @@ const LoginProcess = (logInInfo) => {
         })
       );
       store.dispatch(ACTION.LOGIN_ACTION_FUNC());
+      window.location.reload();
     })
     .catch((err) => console.log(err))
     .catch((err) => console.log(err));
