@@ -63,4 +63,9 @@ public class BookController {
     public ApiResult<BookDto> bookDetail(@PathVariable Long bookId) {
         return ApiResult.OK(new BookDto(bookStatusService.findBook(bookId)));
     }
+
+    @GetMapping("/history")
+    public ApiResult<List<BookDto>> bookSellHistoryList(HttpServletRequest request) {
+        return ApiResult.OK(bookStatusService.findBookBySeller(request).stream().map(bookEntity -> new BookDto(bookEntity)).collect((toList())));
+    }
 }
