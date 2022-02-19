@@ -11,7 +11,6 @@ const Clock = (props) => {
     const EndTime = props.EndTime;
 
     const RemainTime = (end) => {
-        console.log(end);
 
         let Current = dayjs(new Date());        
         let End = dayjs(new Date(end));         

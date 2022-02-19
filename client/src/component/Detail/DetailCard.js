@@ -55,6 +55,29 @@ const TopBody = (props) => {
         ;
     }
 
+    const Wish = () => {
+        axios
+        .post(`http://localhost:8080/wish/${id}`, {
+          
+        }, {
+          headers: {
+            Authorization : "Bearer " + localStorage.getItem("mba-token"), 
+          }
+        }
+        )
+        .then((res) => {
+            console.log(res.data);
+                if(res.data.success){
+                   alert("위시리스트 등록 성공");
+                } else{
+                    alert("이미 위시리스트에 등록된 삼품입니다.");;
+                }
+        })
+        ;
+
+
+    }
+
     return (
         <div style={{width:"1024px", height :"560px", margin:"0 auto"}}>
             <ProductInfo>
@@ -107,7 +130,9 @@ const TopBody = (props) => {
                         </div>
                     </StateInfo>
                     <ButtonInfo>
-                        <Button>위시리스트</Button>
+                        <Button onClick={Wish}>
+                            위시리스트
+                        </Button>
                         <Button2>채팅하기</Button2>
                         <Button3 onClick={Bid}>
                             응찰하기
