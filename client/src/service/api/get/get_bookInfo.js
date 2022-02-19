@@ -13,7 +13,7 @@ const get_bookInfo = (bookSearch) => {
     method: 'GET',
     headers: {
       "Authorization": "Bearer " + localStorage.getItem("mba-token"),
-      Authorization: `KakaoAK ${API_KEY}`
+       Authorization: `KakaoAK ${API_KEY}`
     }
   })
     .then((res) => {

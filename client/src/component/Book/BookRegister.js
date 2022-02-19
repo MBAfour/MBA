@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import Header from '../component/Header/Header'
-import Logo from '../component/Header/Logo'
-import NavigationBar from '../component/Header/NavigationBar'
-import SimpleSlider from '../component/SimpleSlider'
-import Footer from '../component/Footer/Footer'
 import "antd/dist/antd.min.css";
 import { Form, Input, DatePicker, Button } from "antd";
-import bookRegisterProcess from '../service/transaction/bookRegister_process';
+import bookRegisterProcess from "../../service/transaction/bookRegister_process";
 import { useNavigate } from "react-router-dom";
 
 const config = { //error message
@@ -49,7 +44,7 @@ const tailFormItemLayout = {
   }
 };
 
-const BookRegisterPage = () => {
+const BookRegister = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const onFinish = (fieldsValue) => {
@@ -86,8 +81,8 @@ const BookRegisterPage = () => {
     professorName: "",
     increasePrice: "",
     rowPrice: "",
-    startDay: {},
-    endDay: {},
+    startDay: null,
+    endDay: null,
     thumbnail: "",
   });
 
@@ -131,12 +126,10 @@ const BookRegisterPage = () => {
       return setBookRegisterInfo((state) => ({ ...state, rowPrice: rowPrice }));
     },
     startDay: (e) => {
-      const startDay = e.target.value;
-      return setBookRegisterInfo((state) => ({ ...state, startDate: startDay }));
+      return setBookRegisterInfo((state) => ({ ...state, startDay: e }));
     },
     endDay: (e) => {
-      const endDay = e.target.value;
-      return setBookRegisterInfo((state) => ({ ...state, endDate: endDay }));
+      return setBookRegisterInfo((state) => ({ ...state, endDay: e }));
     },
     thumbnail: (e) => { //////
       const thumbnail = e.target.value;
@@ -156,8 +149,8 @@ const BookRegisterPage = () => {
       professorName: "",
       increasePrice: "",
       rowPrice: "",
-      startDay: {},
-      endDay: {},
+      startDay: null,
+      endDay: null,
       thumbnail: "",
     });
 
@@ -168,10 +161,6 @@ const BookRegisterPage = () => {
   return (
     // <Form name="time_related_controls" {...formItemLayout} onFinish={onFinish}>
     <div>
-      <Header />
-      <Logo />
-      <NavigationBar />
-      <SimpleSlider />
       <Form
         {...formItemLayout}
         form={form}
@@ -342,10 +331,9 @@ const BookRegisterPage = () => {
           > Register  </Button>
         </Form.Item>
       </Form>
-      <Footer />
     </div >
 
   );
 };
 
-export default BookRegisterPage;
+export default BookRegister;

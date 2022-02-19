@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
 import styled from "styled-components";
 import BidPrice from './BidPrice';
+import Timer from './Timer';
 import axios from 'axios';
-
 
 const TopBody = (props) => {
 
@@ -69,7 +69,9 @@ const TopBody = (props) => {
                     <Grayinfo>
                         <GrayLeft>
                             <GrayBox>            
-                                <Num>남은시간: {end_day}</Num>
+                                <Num><Timer
+                                    EndTime = {end_day}
+                                /></Num>
                             </GrayBox>
                         </GrayLeft>
                     </Grayinfo>
@@ -95,7 +97,7 @@ const TopBody = (props) => {
                             </ListValueLocation>
                         </div>
                         <div style={{display:"flex", marginBottom:"24px"}}>
-                            <ListName>현재가</ListName>
+                            <ListName>현재 입찰액</ListName>
                             <BidPrice
                                 increase_price = {increase_price}
                                 high_price = {props.high_price}
