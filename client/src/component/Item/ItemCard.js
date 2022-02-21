@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ItemCard.module.css'
+import Timer from '../Detail/Timer'
 
 //아이템 카드를 구성할 각각의 DOM을 생성하는 컴포넌트
 //화면에 보여져야하는 값들을 정리하여 파라미터 값으로 넘겨줄 것
@@ -14,9 +15,8 @@ function ItemCard({ id, thumbnail, title, rowPrice, startDay, endDay }) {
             <p className={styles.item_title}>
                 <span>{title}</span>
             </p>
-            <p className={styles.item_rowPrice}>하한가 : {rowPrice}</p>
-            <p className={styles.item_startDay}>시작일 : {startDay}</p>
-            <p className={styles.item_endDay}>마감일 : {endDay}</p>
+            <p className={styles.item_rowPrice}>시작가 : {rowPrice}</p>
+            <p className={styles.item_endDay}><Timer EndTime = {endDay}/></p>
         </li>
     );
 }
