@@ -1,6 +1,5 @@
 package com.mbafour.mba.service;
 
-import com.mbafour.mba.domain.entity.WishEntity;
 import com.mbafour.mba.domain.repository.WishRepository;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
@@ -11,10 +10,8 @@ public class WishDeleteService {
 
     private final WishRepository wishRepository;
 
- //   public WishEntity deleteWish(Long wishId) {
+    public  void deleteWish(Long wishId) {
+        wishRepository.deleteById(wishId);
+   }
 
-//        return wishRepository.deleteById(
-  //              WishEntityid(wishId)
-    //    );
-//    }
 }
