@@ -19,13 +19,13 @@ public class WishRegisterService {
     private final BookRepository bookRepository;
     private final MemberStatusService memberStatusService;
 
-    public WishEntity addWish(HttpServletRequest request, Long bookId) {
+    public WishEntity addWish(HttpServletRequest request, Long bookId) throws Exception{
 
         BookEntity bookEntity = bookRepository.findById(bookId).get();
 
- //       if(wishRepository.existsByBookAndMember(bookId, memberStatusService.getStatus(request))){
-   //       throw new AlreadyExistWishException();
-     //   }
+        if(wishRepository.existsByMemberAndBook(memberStatusService.getStatus(request), bookEntity)){
+          throw new AlreadyExistWishException();
+        }
 
         return wishRepository.save(WishEntity.builder()
                 .member(memberStatusService.getStatus(request))
