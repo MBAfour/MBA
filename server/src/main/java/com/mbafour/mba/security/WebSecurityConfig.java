@@ -68,6 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*/.js").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/book/{pageNum}").permitAll()
+                .antMatchers("/chat/**").permitAll()
                 .anyRequest()
                 .authenticated();
 
