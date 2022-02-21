@@ -7,13 +7,11 @@ import _ from "../../config/env"
  */
 
 const get_bookInfo = (bookSearch) => {
-  const API_KEY = "1368e554ccbc920aa405ea210462d0eb";
 
-  return fetch(_.SERVER_URL + "/book/info/search?query=" + bookSearch, {
+  return fetch(_.SERVER_URL + `/book/info/search?query=${bookSearch}`, {
     method: 'GET',
     headers: {
-      "Authorization": "Bearer " + localStorage.getItem("mba-token"),
-       Authorization: `KakaoAK ${API_KEY}`
+      Authorization: "Bearer " + localStorage.getItem("mba-token"),
     }
   })
     .then((res) => {

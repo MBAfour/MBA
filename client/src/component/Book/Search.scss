@@ -13,10 +13,12 @@ body {
     .book-text {
       padding: 0px 12px;
       text-align: justify;
+      margin-top: 5px;
       overflow: hidden;
       h2 {
         color: rgb(0, 0, 0);
         font-size: 15px
+
       }
       h5 {
         color: rgb(0, 0, 0);
@@ -36,4 +38,7 @@ body {
       line-height: 1;
     } 
     
+    .book-submit-button{
+      float: left;
+    }
   }

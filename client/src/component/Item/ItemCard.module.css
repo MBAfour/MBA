@@ -35,5 +35,7 @@
 
 .item_endDay {
     margin: 0.5rem;
-    font-size: 12px;
+    margin-top: 1rem;
+    font-size: 15px;
+    color: crimson;
 }

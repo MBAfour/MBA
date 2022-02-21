@@ -59,6 +59,10 @@ const BookRegister = () => {
   /**
   * @description 책 등록시 필요한 data */
   const [bookTitleSearch, setBookTitleSearch] = useState('');
+
+  const handleTitleSearch = (e) => {
+    setBookTitleSearch(e.target.value);
+  }
   // const [bookApiInfo, setBookApiInfo] = useState({
   //   title: "",
   //   author: [],

@@ -7,7 +7,7 @@ const NavigationBar = () => {
     <nav className={styles.nav}>
       <ul className={styles.ul}>
         <li className={styles.li}>
-          <Link className={styles.link} to="/">마이페이지</Link>
+          <Link className={styles.link} to="/mypage">마이페이지</Link>
         </li>
         <li className={styles.li}>
           <Link className={styles.link} to="/book">경매 등록</Link>

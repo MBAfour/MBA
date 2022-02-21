@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import "./Search.scss";
 
+const inputData  = () => {
+  
+}
+
 const SearchItem = ({key, thumbnail, title, authors, price}) => {
   return (
     <div className="book-card-container" key={key}>
@@ -13,6 +17,7 @@ const SearchItem = ({key, thumbnail, title, authors, price}) => {
         </div>
         <div className="book-price">{`${price}원`}</div>
       </div>
+      <button className="book-submit-button"onClick={inputData}>책 선택</button>
     </div>
   )
 }
