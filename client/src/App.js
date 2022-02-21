@@ -25,7 +25,6 @@ class App extends Component {
 
           <Route path="/book/detail/:bookId" element={<BookDetail />} />
           <Route path="/book/detail/:id" element={<ItemCard />} />
-          <Route path="/book/info/search?query=:query" element={<BookSearch />} />
         </Routes>
       </>
     );

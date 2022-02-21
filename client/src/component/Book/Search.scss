@@ -1,10 +1,39 @@
 body {
-  .search-text {
-    padding: 0px 12px;
-    text-align: justify;
-    overflow: hidden;
-    h2 {
-      color: rgb(0, 0, 0);
+  .book-card-container {
+    cursor: pointer;
+    width: 160px;
+    height: 300px;
+    background-color: #ffffff;
+    margin: 60px auto 0 auto;
+    box-shadow: 1px 1px 15px -10px black;
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
     }
+  
+    .book-text {
+      padding: 0px 12px;
+      text-align: justify;
+      overflow: hidden;
+      h2 {
+        color: rgb(0, 0, 0);
+        font-size: 15px
+      }
+      h5 {
+        color: rgb(0, 0, 0);
+        font-size: 12px;
+      }
+    }
+    .book-summary-row {
+      
+      width: 98%;
+    }
+    .book-price {
+      color: #853737;
+      font-size: 14px;
+      margin-right: 4px;
+      position: relative;
+      float: left;
+      line-height: 1;
+    } 
+    
   }
-}
