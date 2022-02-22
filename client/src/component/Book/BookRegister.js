@@ -4,7 +4,47 @@ import { Form, Input, DatePicker, Button } from "antd";
 import bookRegisterProcess from "../../service/transaction/bookRegister_process";
 import { useNavigate } from "react-router-dom";
 
-const BookRegister = ({props}) => {
+const config = { //error message
+  rules: [
+    {
+      type: "object",
+      required: false,
+      message: "Please select time!"
+    }
+  ]
+};
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 18
+    },
+    sm: {
+      span: 8
+    }
+  },
+  wrapperCol: {
+    xs: {
+      span: 18
+    },
+    sm: {
+      span: 16
+    }
+  }
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0
+    },
+    sm: {
+      span: 16,
+      offset: 8
+    }
+  }
+};
+
+const BookRegister = (props) => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const onFinish = (fieldsValue) => {
@@ -16,37 +56,11 @@ const BookRegister = ({props}) => {
     console.log("Received values of form: ", values);
   };
 
-  /**
-  * @description 책 등록시 필요한 data */
-  const [bookTitleSearch, setBookTitleSearch] = useState('');
 
-  const handleTitleSearch = (e) => {
-    setBookTitleSearch(e.target.value);
-  }
-
-  //api에서 가져온 데이터를 넣을 state
-  const [bookApiInfo, setBookApiInfo] = useState({
-    title: "",
-    author: [],
-    publisher: "",
-    thumbnail: "",
-   });
-
-  const {title, author, publisher, thumbnail} = bookApiInfo;
-
-  const clickHandler = (e) => {
-    const {title, author, publisher, thumbnail} = e.target;
-    setBookApiInfo({
-      ...bookApiInfo,
-    });
-  };
-  
-
-  //post할 데이터 state
   const [bookRegisterInfo, setBookRegisterInfo] = useState({
-    title: "",
-    author: [],
-    publisher: "",
+    title: props.title,
+    authors: props.authors,
+    publisher: props.publisher,
     status: "",
     lectureName: "",
     professorName: "",
@@ -54,33 +68,23 @@ const BookRegister = ({props}) => {
     rowPrice: "",
     startDay: null,
     endDay: null,
-    thumbnail: "",
+    thumbnail: props.thumbnail,
   });
 
-  const componentClickHandler = () => {
-    props.clickHandler()
-  }
 
-  
-  let settingBookSearchFunction = {
-    bookTitle: (e) => {
-      const bookTitle = e.target.value;
-      return setBookTitleSearch((state) => ({ ...state, bookTitle: bookTitle }));
-    }
-  }
   let settingBookRegisterFunction = {
-    title: (e) => { //////
-      const title = e.target.value;
-      return setBookRegisterInfo((state) => ({ ...state, title: title }));
-    },
-    author: (e) => {  //////
-      const author = e.target.value;
-      return setBookRegisterInfo((state) => ({ ...state, author: author }));
-    },
-    publisher: (e) => { //////
-      const publisher = e.target.value;
-      return setBookRegisterInfo((state) => ({ ...state, publisher: publisher }));
-    },
+    // title: (e) => { //////
+    //   const title = e.target.value;
+    //   return setBookRegisterInfo((state) => ({ ...state, title: title }));
+    // },
+    // authors: (e) => {  //////
+    //   const authors = e.target.value;
+    //   return setBookRegisterInfo((state) => ({ ...state, authors: authors }));
+    // },
+    // publisher: (e) => { //////
+    //   const publisher = e.target.value;
+    //   return setBookRegisterInfo((state) => ({ ...state, publisher: publisher }));
+    // },
     status: (e) => {
       const status = e.target.value;
       return setBookRegisterInfo((state) => ({ ...state, status: status }));
@@ -107,10 +111,10 @@ const BookRegister = ({props}) => {
     endDay: (e) => {
       return setBookRegisterInfo((state) => ({ ...state, endDay: e }));
     },
-    thumbnail: (e) => {
-      const thumbnail = e.target.value;
-      return setBookRegisterInfo((state) => ({ ...state, thumbnail: thumbnail }));
-    },
+    // thumbnail: (e) => { //////
+    //   const thumbnail = e.target.value;
+    //   return setBookRegisterInfo((state) => ({ ...state, thumbnail: thumbnail }));
+    // },
   };
 
   const bookRegisterBtn = () => {
@@ -135,7 +139,6 @@ const BookRegister = ({props}) => {
 
 
   return (
-    // <Form name="time_related_controls" {...formItemLayout} onFinish={onFinish}>
     <div>
       <Form
         {...formItemLayout}
@@ -149,31 +152,6 @@ const BookRegister = ({props}) => {
         }}
       >
         <h1 style={{ padding: 50, textAlign: "center" }}>Book Register</h1>
-        <Form.Item
-          name="bookSearch"
-          label="BookSearch"
-          rules={[
-            {
-              required: true,
-              message: "Please input your BookSearch!"
-            }
-          ]}
-          style={{
-            width: 600,
-            marginLeft: 230
-          }}
-        >
-          <Input
-            name="search"
-            placeholder="검색어를 입력 하세요..."
-            onChange={settingBookSearchFunction.title} //수정
-            value={bookTitleSearch.title} />
-
-        </Form.Item>
-
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary"> Search </Button>
-        </Form.Item>
 
         <Form.Item
           name="title"
@@ -185,7 +163,7 @@ const BookRegister = ({props}) => {
             }
           ]}
         >
-          <Input onChange={settingBookRegisterFunction.title} value={bookRegisterInfo.title} />
+          <Input value={bookRegisterInfo.title} readOnly disabled />
         </Form.Item>
 
         <Form.Item
@@ -198,7 +176,7 @@ const BookRegister = ({props}) => {
             }
           ]}
         >
-          <Input onChange={settingBookRegisterFunction.author} value={bookRegisterInfo.author} />
+          <Input value={bookRegisterInfo.authors} readOnly disabled />
         </Form.Item>
 
         <Form.Item
@@ -211,7 +189,7 @@ const BookRegister = ({props}) => {
             }
           ]}
         >
-          <Input onChange={settingBookRegisterFunction.publisher} value={bookRegisterInfo.publisher} />
+          <Input value={bookRegisterInfo.publisher} readOnly disabled />
         </Form.Item>
 
         <Form.Item
@@ -297,7 +275,7 @@ const BookRegister = ({props}) => {
             }
           ]}
         >
-          <Input onChange={settingBookRegisterFunction.thumbnail} value={bookRegisterInfo.thumbnail} />
+          <Input value={bookRegisterInfo.thumbnail} readOnly disabled />
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
@@ -313,44 +291,3 @@ const BookRegister = ({props}) => {
 };
 
 export default BookRegister;
-
-
-const config = { //error message
-  rules: [
-    {
-      type: "object",
-      required: false,
-      message: "Please select time!"
-    }
-  ]
-};
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 18
-    },
-    sm: {
-      span: 8
-    }
-  },
-  wrapperCol: {
-    xs: {
-      span: 18
-    },
-    sm: {
-      span: 16
-    }
-  }
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0
-    },
-    sm: {
-      span: 16,
-      offset: 8
-    }
-  }
-};

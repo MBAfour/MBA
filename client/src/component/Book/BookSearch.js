@@ -48,11 +48,11 @@ const BookSearch = () => {
 
     <div>
       <Row>
-      {searchBook && searchBook.map((book, index) => {
+      {searchBook && searchBook.map((book) => {
           return (
             <Col xs={20} sm={8} md={5} lg={4} xl={4}>
               <SearchItem 
-              key={index}
+              key={book.isbn}
               thumbnail={book.thumbnail}
               title={book.title}
               authors={book.authors}
