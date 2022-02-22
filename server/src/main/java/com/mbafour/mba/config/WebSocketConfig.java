@@ -8,17 +8,22 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 //WebSocket설정
 
-@EnableWebSocketMessageBroker
+@EnableWebSocketMessageBroker //메시지 브로커가 지원하는 WebSocket메시지 처리 활성화
 @Configuration
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    // HandShake와 통신을 담당할 End Point를 지정
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/chat").setAllowedOriginPatterns("*").withSockJS(); //클라이언트에서 웹 소켓을 연결할 api
+        registry.addEndpoint("/chat").setAllowedOriginPatterns("*").withSockJS(); //클라이언트에서 웹 소켓을 연결할 api (handshake endpoint)
     }
 
+    //메모리 기반의 Simple Message Broker를 활성화
+    // /subscribe로 시작하는 주소의 Subscriber들에게 메시지를 전달
+    // 클라이언트가 서버로 메시지 보낼 때 붙여야하는 prefix는 /publish로 지정
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.setApplicationDestinationPrefixes("/app"); //서버에서 클라이언트로부터 메세지를 받을 api의 prefix
-        registry.enableSimpleBroker("/topic/"); //broker역할 수행시 사용할 prefix
+        registry.enableSimpleBroker("/subscribe/");
+        registry.setApplicationDestinationPrefixes("/publish");
     }
 }

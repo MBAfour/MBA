@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //listener
-//KafkaTemplate을 통해 topic에 메시지를 보냄
+//kafka에서 메시지를 받음
 
 @EnableKafka
 @Configuration
