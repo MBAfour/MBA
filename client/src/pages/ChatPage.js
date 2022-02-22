@@ -10,6 +10,7 @@ import "./styles.css";
 import Chat from "./Chat";
 import ChatInput from "./ChatInput";
 import ChatLogin from "./ChatLogin";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   margin-top: 100px;
@@ -17,9 +18,10 @@ const Container = styled.div`
 `;
 
 function ChatPage() {
+  const {bookId} = useParams();
+  console.log("bookId : " , bookId);
   const [messages, setMessages] = useState([]);
   const [user, setUser] = useState(null);
-
   const onMessageReceived = (msg) => {
     console.log("New Message Received!!", msg);
     setMessages(messages.concat(msg));
@@ -31,9 +33,9 @@ function ChatPage() {
 
   const handleMessageSubmit = (msg) => {
     chatApi
-      .sendMessage(user.name, msg)
+      .sendMessage(user.name, msg, bookId)
       .then((res) => {
-        console.log("sent", res);
+        console.log("send", res);
       })
       .catch((e) => {
         console.log(e);
@@ -57,7 +59,7 @@ function ChatPage() {
         <div className="chat-container">
           <SockJsClient
             url={"http://localhost:8080/chat/"} 
-            topics={["/topic/group"]}
+            topics={["/subscribe/book/" + bookId]} // 
             onConnect={console.log("connected!")}
             onDisconnect={console.log("disconnected!")}
             onMessage={(msg) => onMessageReceived(msg)}

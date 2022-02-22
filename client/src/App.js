@@ -41,7 +41,7 @@ class App extends Component {
 
           <Route path="/book/detail/:bookId" element={<BookDetail />} />
           <Route path="/book/detail/:id" element={<ItemCard />} />
-          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/chat/:bookId" element={<ChatPage />} />
         </Routes>
       </>
     );

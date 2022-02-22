@@ -83,7 +83,7 @@ const TopBody = (props) => {
     }
 
     const Chat = () => {
-        navigate("/chat");
+        navigate("/chat/" + id);
     }
 
     return (
@@ -141,7 +141,9 @@ const TopBody = (props) => {
                         <Button onClick={Wish}>
                             위시리스트
                         </Button>
-                        <Button2 onClick={Chat}>채팅하기</Button2>
+                        <Link to={`/chat/${id}` }>
+                        <Button2 >채팅하기</Button2>
+                        </Link>
                         <Button3 onClick={Bid}>
                             응찰하기
                         </Button3>

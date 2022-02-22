@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const api = Axios.create({
-  baseURL: "http://localhost:8080/kafka",
+  baseURL: "http://localhost:8080/",
 });
 
 const chatAPI = {
@@ -15,10 +15,11 @@ const chatAPI = {
     });
   },*/
 
-  sendMessage: (username, text) => {
+  sendMessage: (username, text, bookId) => {
     let msg = {
       author: username,
       content: text,
+      bookId: bookId,
     };
     console.log("Calling send messages from API");
     return api.post(`/publish`, msg, {
