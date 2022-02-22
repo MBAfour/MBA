@@ -37,10 +37,14 @@ public class WishController {
         }
     }
 
-    @DeleteMapping("/delete/{wishId}")
-    public ApiResult<WishRequest> wishDelete(@PathVariable Long wishId) {
-        wishDeleteService.deleteWish(wishId);
-        return ApiResult.OK(new WishRequest(new WishEntity()));
+    @DeleteMapping("/{wishId}")
+    public ApiResult<?> wishDelete(@PathVariable Long wishId) {
+        try {
+            wishDeleteService.deleteWish(wishId);
+            return ApiResult.OK(true);
+        } catch (Exception e){
+            return ApiResult.ERROR(e,HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("")
