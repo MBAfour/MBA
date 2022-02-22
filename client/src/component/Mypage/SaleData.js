@@ -29,9 +29,8 @@ function SaleData() {
         <ul>
           <li>번호</li>
           <li>책 이름</li>
-          <li>저자</li>
           <li>최고응찰가격</li>
-          <li>경매마감날짜</li>
+          <li>경매마감날짜</li >
         </ul>
       </div>
       {lists && (
@@ -42,7 +41,6 @@ function SaleData() {
                 <ul>
                   <li>{index + 1}</li>
                   <li>{lists.title}</li>
-                  <li>{lists.author}</li>
                   <li>{lists.highPrice}</li>
                   <li>{lists.endDay}</li>
                 </ul>
