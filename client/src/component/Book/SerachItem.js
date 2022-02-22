@@ -32,6 +32,24 @@ const SearchItem = ({isbn, thumbnail, title, authors, price, publisher}) => {
   )
 }
 
+// const SearchItem = ({index, thumbnail, title, authors, price}) => {
+//   const titles = {title};
+
+//   return (
+//     <div className="book-card-container">
+//       <CardImg thumbnail={thumbnail}/>
+//       <div className="book-text">
+//         <h2>{title}</h2>
+//         <h5>{authors}</h5>
+//         <div className="book-summary-row">
+//         </div>
+//         <div className="book-price">{`${price}원`}</div>
+//       </div>
+//       <button className="book-submit-button"onClick={inputData(titles)}>책 선택</button>
+//     </div>
+//   )
+// }
+
 export default SearchItem;
 
 

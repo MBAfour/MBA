@@ -56,16 +56,15 @@ function ChatInput({ handleOnSubmit }) {
     <Container className="chat-bottom">
       <form onSubmit={handleSubmit} id="chatForm">
         <Input
-          placeholder="내용을 입력하세요."
+          placeholder="Press Enter for send message"
           value={msg}
           onChange={handleOnChange}
           onKeyPress={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === "Enter") {           
               handleSubmit(e);
             }
           }}
         />
-        <button type="submit">전송</button>
       </form>
     </Container>
   );

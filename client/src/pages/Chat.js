@@ -2,14 +2,27 @@ import React from "react";
 import styled from "styled-components";
 
 const ChatBox = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 49px;
   
-  color: #000;
-  border: none;
-  border-radius: 0;
-  background-color: rgb(225, 213, 195);
+`;
+
+
+
+const Sender = styled.div`
+  margin: 10px 20px 0 20px; 
+  font-weight: bold;
+`;
+
+const Message = styled.div`
+  display: inline-block; 
+  word-break:break-all; 
+  margin: 5px 20px; 
+  max-width: 75%; 
+  border: 1px solid #888; 
+  padding: 10px; 
+  border-radius: 5px; 
+  background-color: #FCFCFC; 
+  color: #555; 
+  text-align: left;
 `;
 
 function Chat({ messages, currentUser }) {
@@ -24,16 +37,26 @@ function Chat({ messages, currentUser }) {
 
   return (
     <ChatBox className="chat-middle">
+
+    <div className="chat-header">
+      채팅방
+    </div> 
+      <ul>
       {messages.map((msg) => (
-        <li
+        <li 
           className={`chat-bubble ${
             msg.author === currentUser.name ? "send" : "receive"
           }`}
         >
-          <span>{msg.author} : {msg.content} </span>
-
+          <Sender>
+          <span>{msg.author} </span>
+          </Sender>
+          <Message>
+          <span>{msg.content}</span>
+          </Message>
         </li>
       ))}
+      </ul>
     </ChatBox>
   );
 }

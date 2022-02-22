@@ -26,14 +26,17 @@ function ChatLogin({ handleOnSubmit }) {
   };
   
   return (
+    
     <div>
-      <form onSubmit={handleSubmit}>
+      <div className="chat-header">
+      채팅
+      </div> 
+      <form onSubmit={handleSubmit} className="chat-input">
         <Input
-          placeholder="사용할 닉네임을 입력하세요."
+          placeholder="Presser Enter after input your nickname"
           value={name}
           onChange={handleOnChange}
         />
-        <button type="submit">입장</button>
       </form>
     </div>
   );

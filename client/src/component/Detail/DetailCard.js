@@ -312,7 +312,7 @@ const Button2 = styled.button`
     width:100%;
     cursor: pointer;
     height: 56px;
-    width: 179px;
+    width: 169px;
     font-size: 18px;
     font-weight: 600;
     line-height: 20.7px;

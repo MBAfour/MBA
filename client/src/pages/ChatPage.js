@@ -13,9 +13,16 @@ import ChatLogin from "./ChatLogin";
 import { useParams } from "react-router-dom";
 
 const Container = styled.div`
-  margin-top: 100px;
-  padding: 20px;
+  
 `;
+
+const ChatInputText = styled.div`
+  position:fixed;
+  bottom: 0;
+  width: 100%;
+  
+
+  `;
 
 function ChatPage() {
   const {bookId} = useParams();
@@ -51,7 +58,7 @@ function ChatPage() {
 };
 
   return (
-    <>
+    <div>
       {user !== null ? (
           <Container>
         <Header />
@@ -66,8 +73,10 @@ function ChatPage() {
             debug={false}
             headers= {customHeaders}
           />
-          <ChatInput handleOnSubmit={handleMessageSubmit} />
           <Chat messages={messages} currentUser={user} />
+          <ChatInputText>
+          <ChatInput handleOnSubmit={handleMessageSubmit} />
+          </ChatInputText>
         </div>
         </Container>
       ) : (
@@ -77,7 +86,7 @@ function ChatPage() {
         <ChatLogin handleOnSubmit={handleLoginSubmit} />
         </Container>
       )}
-    </>
+    </div>
   );
 }
 
