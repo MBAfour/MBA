@@ -13,7 +13,7 @@
   margin-bottom: 0;
 }
 .ultitle ul li {
-  width: calc(100% / 8);
+  width: 25%;
   float: left;
   border: 1px solid black;
   list-style: none;
@@ -38,7 +38,7 @@
   border-left: 1px solid #cdcdcd;
 }
 .ulcontent ul li {
-  width: calc(100% / 8);
+  width: 25%;
   float: left;
   border-right: 1px solid #cdcdcd;
   list-style: none;
