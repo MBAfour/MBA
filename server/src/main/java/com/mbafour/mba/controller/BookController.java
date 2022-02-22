@@ -2,12 +2,12 @@ package com.mbafour.mba.controller;
 
 import com.mbafour.mba.domain.entity.BookEntity;
 import com.mbafour.mba.dto.ApiResult;
-import com.mbafour.mba.dto.BookDto;
-import com.mbafour.mba.dto.BookInfoDto;
-import com.mbafour.mba.dto.BookRequest;
-import com.mbafour.mba.service.BookOpenApiService;
-import com.mbafour.mba.service.BookRegisterService;
-import com.mbafour.mba.service.BookStatusService;
+import com.mbafour.mba.dto.book.BookDto;
+import com.mbafour.mba.dto.book.BookInfoDto;
+import com.mbafour.mba.dto.book.BookRequest;
+import com.mbafour.mba.service.book.BookOpenApiService;
+import com.mbafour.mba.service.book.BookRegisterService;
+import com.mbafour.mba.service.book.BookStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

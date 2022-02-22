@@ -1,23 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import BookRegister from "./BookRegister";
 import "./Search.scss";
 
-const inputData  = () => {
-  
-}
 
-const SearchItem = ({key, thumbnail, title, authors, price}) => {
+const SearchItem = ({isbn, thumbnail, title, authors, price, publisher}) => {
+
   return (
-    <div className="book-card-container" key={key}>
-      <CardImg thumbnail={thumbnail}/>
+    <div className="book-card-container" key={isbn}>
+      <CardImg thumbnail={thumbnail} />
       <div className="book-text">
-        <h2>{title}</h2>
-        <h5>{authors}</h5>
         <div className="book-summary-row">
+          <div className="image-url">image link: {thumbnail}</div>
+          <div className="book-price">{title}</div>
+          <div className="book-publisher">{publisher} / {authors}</div>
         </div>
-        <div className="book-price">{`${price}원`}</div>
       </div>
-      <button className="book-submit-button"onClick={inputData}>책 선택</button>
+      <Link to={{
+        pathname: `/book/${isbn}`,
+        state: {
+          title: title,
+          publisher: publisher,
+          authors: authors,
+          thumbnail: thumbnail
+        }
+      }}>
+{/*}      <button className="book-submit-button">책 선택</button> {*/}
+      </Link>
     </div>
   )
 }
