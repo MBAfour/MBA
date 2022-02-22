@@ -9,4 +9,5 @@ public class BookInfoDto {
     private Long price;
     private String publisher;
     private String thumbnail;
+    private String isbn;
 }

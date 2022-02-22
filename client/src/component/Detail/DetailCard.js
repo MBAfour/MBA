@@ -3,6 +3,8 @@ import styled from "styled-components";
 import BidPrice from './BidPrice';
 import Timer from './Timer';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
+import {useNavigate} from "react-router-dom";
 
 const TopBody = (props) => {
 
@@ -23,6 +25,8 @@ const TopBody = (props) => {
 
     const [price, setPrice] = useState(0);  // 자식으로 부터 high_price를 전달받기 위함
 
+    const navigate = useNavigate();
+    
     useEffect(() => {
        if(high_price != 'undefined' && high_price != null){
             setPrice(high_price);
@@ -76,6 +80,10 @@ const TopBody = (props) => {
         ;
 
 
+    }
+
+    const Chat = () => {
+        navigate("/chat/" + id);
     }
 
     return (
@@ -133,7 +141,9 @@ const TopBody = (props) => {
                         <Button onClick={Wish}>
                             위시리스트
                         </Button>
-                        <Button2>채팅하기</Button2>
+                        <Link to={`/chat/${id}` }>
+                        <Button2 >채팅하기</Button2>
+                        </Link>
                         <Button3 onClick={Bid}>
                             응찰하기
                         </Button3>
