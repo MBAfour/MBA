@@ -58,3 +58,4 @@ function InfoUpdate() {
 }
 
 export default InfoUpdate;
+

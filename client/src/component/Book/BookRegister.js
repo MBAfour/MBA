@@ -4,47 +4,7 @@ import { Form, Input, DatePicker, Button } from "antd";
 import bookRegisterProcess from "../../service/transaction/bookRegister_process";
 import { useNavigate } from "react-router-dom";
 
-const config = { //error message
-  rules: [
-    {
-      type: "object",
-      required: false,
-      message: "Please select time!"
-    }
-  ]
-};
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 18
-    },
-    sm: {
-      span: 8
-    }
-  },
-  wrapperCol: {
-    xs: {
-      span: 18
-    },
-    sm: {
-      span: 16
-    }
-  }
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0
-    },
-    sm: {
-      span: 16,
-      offset: 8
-    }
-  }
-};
-
-const BookRegister = () => {
+const BookRegister = ({props}) => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const onFinish = (fieldsValue) => {
@@ -63,19 +23,26 @@ const BookRegister = () => {
   const handleTitleSearch = (e) => {
     setBookTitleSearch(e.target.value);
   }
-  // const [bookApiInfo, setBookApiInfo] = useState({
-  //   title: "",
-  //   author: [],
-  //   publisher: "",
-  //   thumbnail: "",
-  // });
-  // const searchClick = () => {
-  //   axios.get('http://localhost:8080/book/info/search?query=' + bookTitleSearch)
-  //     .then(response => {
-  //       setBookApiInfo(response.data);
-  //     });
-  // }
 
+  //api에서 가져온 데이터를 넣을 state
+  const [bookApiInfo, setBookApiInfo] = useState({
+    title: "",
+    author: [],
+    publisher: "",
+    thumbnail: "",
+   });
+
+  const {title, author, publisher, thumbnail} = bookApiInfo;
+
+  const clickHandler = (e) => {
+    const {title, author, publisher, thumbnail} = e.target;
+    setBookApiInfo({
+      ...bookApiInfo,
+    });
+  };
+  
+
+  //post할 데이터 state
   const [bookRegisterInfo, setBookRegisterInfo] = useState({
     title: "",
     author: [],
@@ -90,6 +57,11 @@ const BookRegister = () => {
     thumbnail: "",
   });
 
+  const componentClickHandler = () => {
+    props.clickHandler()
+  }
+
+  
   let settingBookSearchFunction = {
     bookTitle: (e) => {
       const bookTitle = e.target.value;
@@ -135,7 +107,7 @@ const BookRegister = () => {
     endDay: (e) => {
       return setBookRegisterInfo((state) => ({ ...state, endDay: e }));
     },
-    thumbnail: (e) => { //////
+    thumbnail: (e) => {
       const thumbnail = e.target.value;
       return setBookRegisterInfo((state) => ({ ...state, thumbnail: thumbnail }));
     },
@@ -194,7 +166,7 @@ const BookRegister = () => {
           <Input
             name="search"
             placeholder="검색어를 입력 하세요..."
-            onChange={settingBookSearchFunction.title}
+            onChange={settingBookSearchFunction.title} //수정
             value={bookTitleSearch.title} />
 
         </Form.Item>
@@ -341,3 +313,44 @@ const BookRegister = () => {
 };
 
 export default BookRegister;
+
+
+const config = { //error message
+  rules: [
+    {
+      type: "object",
+      required: false,
+      message: "Please select time!"
+    }
+  ]
+};
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 18
+    },
+    sm: {
+      span: 8
+    }
+  },
+  wrapperCol: {
+    xs: {
+      span: 18
+    },
+    sm: {
+      span: 16
+    }
+  }
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0
+    },
+    sm: {
+      span: 16,
+      offset: 8
+    }
+  }
+};

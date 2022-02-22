@@ -1,23 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import BookRegister from "./BookRegister";
 import "./Search.scss";
 
-const inputData  = () => {
-  
-}
 
-const SearchItem = ({key, thumbnail, title, authors, price}) => {
+const SearchItem = ({index, thumbnail, title, authors, price, publisher}) => {
+
+  const clickHandler = () =>{
+    console.log(index)
+  }
+
   return (
-    <div className="book-card-container" key={key}>
+    <div className="book-card-container" key={index}>
       <CardImg thumbnail={thumbnail}/>
       <div className="book-text">
         <h2>{title}</h2>
-        <h5>{authors}</h5>
+        <h5>{publisher} / {authors}</h5>
         <div className="book-summary-row">
         </div>
         <div className="book-price">{`${price}원`}</div>
       </div>
-      <button className="book-submit-button"onClick={inputData}>책 선택</button>
+      <button className="book-submit-button" onClick={clickHandler(index)}>책 선택</button>
     </div>
   )
 }

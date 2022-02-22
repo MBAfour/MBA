@@ -11,7 +11,7 @@ function WishData() {
   useEffect(() => {
     async function getData() {
       const response = await axios
-        .get(_.SERVER_URL + `/`, {
+        .get(_.SERVER_URL + `/wish`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("mba-token"),
           }
@@ -28,8 +28,9 @@ function WishData() {
       <div className={styles.ultitle}>
         <ul>
           <li>번호</li>
-          <li>책 번호</li>
+          <li>책 제목</li>
           <li>최고응찰가격</li>
+          <li>경매마감날짜</li>
         </ul>
       </div>
       {lists && (
@@ -39,8 +40,9 @@ function WishData() {
               <Link className={styles.link} to={`/book/detail/${lists.id}`}>
                 <ul>
                   <li>{index + 1}</li>
-                  <li>{lists.id}</li>
+                  <li>{lists.title}</li>
                   <li>{lists.highPrice}</li>
+                  <li>{lists.endDay}</li>
                 </ul>
               </Link>
             </div>

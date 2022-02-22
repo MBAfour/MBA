@@ -56,6 +56,7 @@ const BookSearch = () => {
               thumbnail={book.thumbnail}
               title={book.title}
               authors={book.authors}
+              publisher={book.publisher}
               price={book.price}
               />
             </Col>
