@@ -48,14 +48,15 @@ const BookSearch = () => {
 
     <div>
       <Row>
-      {searchBook && searchBook.map((book, index) => {
+      {searchBook && searchBook.map((book) => {
           return (
-            <Col xs={20} sm={8} md={5} lg={4} xl={4}>
+            <Col xs={20} sm={20} md={10} lg={15} xl={6}>
               <SearchItem 
-              key={index}
+              key={book.isbn}
               thumbnail={book.thumbnail}
               title={book.title}
               authors={book.authors}
+              publisher={book.publisher}
               price={book.price}
               />
             </Col>

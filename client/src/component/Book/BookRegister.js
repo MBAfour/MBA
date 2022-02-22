@@ -16,30 +16,30 @@ const config = { //error message
 const formItemLayout = {
   labelCol: {
     xs: {
-      span: 18
+      span: 16
     },
     sm: {
-      span: 8
+      span: 6
     }
   },
   wrapperCol: {
     xs: {
-      span: 18
+      span: 12
     },
     sm: {
-      span: 16
+      span: 14
     }
   }
 };
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
-      span: 24,
+      span: 20,
       offset: 0
     },
     sm: {
       span: 16,
-      offset: 8
+      offset: 11
     }
   }
 };
@@ -56,26 +56,6 @@ const BookRegister = () => {
     console.log("Received values of form: ", values);
   };
 
-  /**
-  * @description 책 등록시 필요한 data */
-  const [bookTitleSearch, setBookTitleSearch] = useState('');
-
-  const handleTitleSearch = (e) => {
-    setBookTitleSearch(e.target.value);
-  }
-  // const [bookApiInfo, setBookApiInfo] = useState({
-  //   title: "",
-  //   author: [],
-  //   publisher: "",
-  //   thumbnail: "",
-  // });
-  // const searchClick = () => {
-  //   axios.get('http://localhost:8080/book/info/search?query=' + bookTitleSearch)
-  //     .then(response => {
-  //       setBookApiInfo(response.data);
-  //     });
-  // }
-
   const [bookRegisterInfo, setBookRegisterInfo] = useState({
     title: "",
     author: [],
@@ -90,12 +70,6 @@ const BookRegister = () => {
     thumbnail: "",
   });
 
-  let settingBookSearchFunction = {
-    bookTitle: (e) => {
-      const bookTitle = e.target.value;
-      return setBookTitleSearch((state) => ({ ...state, bookTitle: bookTitle }));
-    }
-  }
   let settingBookRegisterFunction = {
     title: (e) => { //////
       const title = e.target.value;
@@ -163,7 +137,6 @@ const BookRegister = () => {
 
 
   return (
-    // <Form name="time_related_controls" {...formItemLayout} onFinish={onFinish}>
     <div>
       <Form
         {...formItemLayout}
@@ -177,32 +150,7 @@ const BookRegister = () => {
         }}
       >
         <h1 style={{ padding: 50, textAlign: "center" }}>Book Register</h1>
-        <Form.Item
-          name="bookSearch"
-          label="BookSearch"
-          rules={[
-            {
-              required: true,
-              message: "Please input your BookSearch!"
-            }
-          ]}
-          style={{
-            width: 600,
-            marginLeft: 230
-          }}
-        >
-          <Input
-            name="search"
-            placeholder="검색어를 입력 하세요..."
-            onChange={settingBookSearchFunction.title}
-            value={bookTitleSearch.title} />
-
-        </Form.Item>
-
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary"> Search </Button>
-        </Form.Item>
-
+    
         <Form.Item
           name="title"
           label="Title"

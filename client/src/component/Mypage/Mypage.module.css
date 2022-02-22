@@ -19,13 +19,14 @@
   width: calc(100% / 4);
   float: left;
   list-style: none;
+  font-size: 17px;
   border-right: 1px solid #cdcdcd;
   height: 100%;
   text-align: center;
   padding: 0;
-  line-height: 50px;
+  line-height: 30px;
   cursor: pointer;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'MinSans-Medium';
   box-sizing: border-box;
   text-decoration: none;
 }
@@ -40,7 +41,7 @@
   margin-top: 50px;
   border-bottom: 1px solid #cdcdcd;
   padding-bottom: 10px;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'MinSans-Medium';
   margin-bottom: 50px;
 }
 
@@ -58,7 +59,7 @@
   display: block;
   margin-bottom: 10px;
   line-height: 40px;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'MinSans-Medium';
 }
 .input {
   float: left;

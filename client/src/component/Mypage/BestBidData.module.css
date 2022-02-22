@@ -39,6 +39,7 @@
 }
 .ulcontent ul li {
   width: 25%;
+  font-family: 'MinSans-Medium';
   float: left;
   border-right: 1px solid #cdcdcd;
   list-style: none;
