@@ -1,8 +1,8 @@
 package com.mbafour.mba.controller;
 
 import com.mbafour.mba.dto.ApiResult;
-import com.mbafour.mba.dto.MemberDto;
-import com.mbafour.mba.service.MemberStatusService;
+import com.mbafour.mba.dto.member.MemberDto;
+import com.mbafour.mba.service.member.MemberStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

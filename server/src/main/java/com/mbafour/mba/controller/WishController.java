@@ -2,11 +2,11 @@ package com.mbafour.mba.controller;
 
 import com.mbafour.mba.domain.entity.WishEntity;
 import com.mbafour.mba.dto.ApiResult;
-import com.mbafour.mba.dto.WishDto;
-import com.mbafour.mba.dto.WishRequest;
-import com.mbafour.mba.service.WishDeleteService;
-import com.mbafour.mba.service.WishRegisterService;
-import com.mbafour.mba.service.WishStatusService;
+import com.mbafour.mba.dto.wish.WishDto;
+import com.mbafour.mba.dto.wish.WishRequest;
+import com.mbafour.mba.service.wish.WishDeleteService;
+import com.mbafour.mba.service.wish.WishRegisterService;
+import com.mbafour.mba.service.wish.WishStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

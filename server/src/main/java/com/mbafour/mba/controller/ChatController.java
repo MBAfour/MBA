@@ -1,8 +1,8 @@
 package com.mbafour.mba.controller;
 
 import com.mbafour.mba.config.KafkaConstants;
-import com.mbafour.mba.dto.Message;
-import com.mbafour.mba.service.MessageSender;
+import com.mbafour.mba.dto.message.Message;
+import com.mbafour.mba.service.message.MessageSender;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

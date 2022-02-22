@@ -1,8 +1,11 @@
 package com.mbafour.mba.controller;
 
 import com.mbafour.mba.dto.*;
-import com.mbafour.mba.service.MemberLoginService;
-import com.mbafour.mba.service.MemberRegisterService;
+import com.mbafour.mba.dto.auth.SignInRequest;
+import com.mbafour.mba.dto.auth.SignUpRequest;
+import com.mbafour.mba.dto.member.MemberDto;
+import com.mbafour.mba.service.member.MemberLoginService;
+import com.mbafour.mba.service.member.MemberRegisterService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

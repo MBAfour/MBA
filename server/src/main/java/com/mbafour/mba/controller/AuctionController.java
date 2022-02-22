@@ -1,10 +1,10 @@
 package com.mbafour.mba.controller;
 
 import com.mbafour.mba.dto.ApiResult;
-import com.mbafour.mba.dto.AuctionDto;
-import com.mbafour.mba.dto.AuctionRequest;
-import com.mbafour.mba.service.AuctionModifyService;
-import com.mbafour.mba.service.AuctionStatusService;
+import com.mbafour.mba.dto.auction.AuctionDto;
+import com.mbafour.mba.dto.auction.AuctionRequest;
+import com.mbafour.mba.service.auction.AuctionModifyService;
+import com.mbafour.mba.service.auction.AuctionStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package com.mbafour.mba.config;
 
-import com.mbafour.mba.dto.Message;
+import com.mbafour.mba.dto.message.Message;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
