@@ -3,6 +3,7 @@ import Header from '../component/Header/Header'
 import Logo from '../component/Header/Logo'
 import SignupProcess from '../service/transaction/signup_process'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   margin-top: 100px;
@@ -98,7 +99,9 @@ const SignupPage = ({  }) => {
         <Input id="name" name="name" placeholder="이름" onChange={settingSingUpFunction.name} value={signUpInfo.name}/>
         <Input id="email" name="email" type="email" placeholder="이메일" onChange={settingSingUpFunction.email} value={signUpInfo.email}/>
         <Input id="phone" name="phone" placeholder="전화번호" onChange={settingSingUpFunction.phone} value={signUpInfo.phone}/>
+        <Link to='/'>
         <Button onClick={SignupBtnOnclick}>회원가입</Button>
+        </Link>
       </Container>
     </>
   );
