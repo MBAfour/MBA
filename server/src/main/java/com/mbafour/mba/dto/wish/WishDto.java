@@ -9,6 +9,7 @@ import java.util.Date;
 @Setter
 public class WishDto {
 
+    private Long id;
     private Long wishId;
     private String title;
     private String author;
@@ -16,6 +17,7 @@ public class WishDto {
     private Long highPrice;
 
     public WishDto(WishEntity wishEntity){
+        this.id = wishEntity.getBook().getId();
         this.wishId = wishEntity.getId();
         this.title = wishEntity.getBook().getTitle();
         this.author = wishEntity.getBook().getAuthor();
