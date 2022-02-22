@@ -16,35 +16,35 @@ const config = { //error message
 const formItemLayout = {
   labelCol: {
     xs: {
-      span: 18
+      span: 16
     },
     sm: {
-      span: 8
+      span: 6
     }
   },
   wrapperCol: {
     xs: {
-      span: 18
+      span: 12
     },
     sm: {
-      span: 16
+      span: 14
     }
   }
 };
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
-      span: 24,
+      span: 20,
       offset: 0
     },
     sm: {
       span: 16,
-      offset: 8
+      offset: 11
     }
   }
 };
 
-const BookRegister = (props) => {
+const BookRegister = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const onFinish = (fieldsValue) => {
@@ -56,11 +56,10 @@ const BookRegister = (props) => {
     console.log("Received values of form: ", values);
   };
 
-
   const [bookRegisterInfo, setBookRegisterInfo] = useState({
-    title: props.title,
-    authors: props.authors,
-    publisher: props.publisher,
+    title: "",
+    author: [],
+    publisher: "",
     status: "",
     lectureName: "",
     professorName: "",
@@ -68,23 +67,22 @@ const BookRegister = (props) => {
     rowPrice: "",
     startDay: null,
     endDay: null,
-    thumbnail: props.thumbnail,
+    thumbnail: "",
   });
 
-
   let settingBookRegisterFunction = {
-    // title: (e) => { //////
-    //   const title = e.target.value;
-    //   return setBookRegisterInfo((state) => ({ ...state, title: title }));
-    // },
-    // authors: (e) => {  //////
-    //   const authors = e.target.value;
-    //   return setBookRegisterInfo((state) => ({ ...state, authors: authors }));
-    // },
-    // publisher: (e) => { //////
-    //   const publisher = e.target.value;
-    //   return setBookRegisterInfo((state) => ({ ...state, publisher: publisher }));
-    // },
+    title: (e) => { //////
+      const title = e.target.value;
+      return setBookRegisterInfo((state) => ({ ...state, title: title }));
+    },
+    author: (e) => {  //////
+      const author = e.target.value;
+      return setBookRegisterInfo((state) => ({ ...state, author: author }));
+    },
+    publisher: (e) => { //////
+      const publisher = e.target.value;
+      return setBookRegisterInfo((state) => ({ ...state, publisher: publisher }));
+    },
     status: (e) => {
       const status = e.target.value;
       return setBookRegisterInfo((state) => ({ ...state, status: status }));
@@ -111,10 +109,10 @@ const BookRegister = (props) => {
     endDay: (e) => {
       return setBookRegisterInfo((state) => ({ ...state, endDay: e }));
     },
-    // thumbnail: (e) => { //////
-    //   const thumbnail = e.target.value;
-    //   return setBookRegisterInfo((state) => ({ ...state, thumbnail: thumbnail }));
-    // },
+    thumbnail: (e) => { //////
+      const thumbnail = e.target.value;
+      return setBookRegisterInfo((state) => ({ ...state, thumbnail: thumbnail }));
+    },
   };
 
   const bookRegisterBtn = () => {
@@ -152,7 +150,7 @@ const BookRegister = (props) => {
         }}
       >
         <h1 style={{ padding: 50, textAlign: "center" }}>Book Register</h1>
-
+    
         <Form.Item
           name="title"
           label="Title"
@@ -163,7 +161,7 @@ const BookRegister = (props) => {
             }
           ]}
         >
-          <Input value={bookRegisterInfo.title} readOnly disabled />
+          <Input onChange={settingBookRegisterFunction.title} value={bookRegisterInfo.title} />
         </Form.Item>
 
         <Form.Item
@@ -176,7 +174,7 @@ const BookRegister = (props) => {
             }
           ]}
         >
-          <Input value={bookRegisterInfo.authors} readOnly disabled />
+          <Input onChange={settingBookRegisterFunction.author} value={bookRegisterInfo.author} />
         </Form.Item>
 
         <Form.Item
@@ -189,7 +187,7 @@ const BookRegister = (props) => {
             }
           ]}
         >
-          <Input value={bookRegisterInfo.publisher} readOnly disabled />
+          <Input onChange={settingBookRegisterFunction.publisher} value={bookRegisterInfo.publisher} />
         </Form.Item>
 
         <Form.Item
@@ -275,7 +273,7 @@ const BookRegister = (props) => {
             }
           ]}
         >
-          <Input value={bookRegisterInfo.thumbnail} readOnly disabled />
+          <Input onChange={settingBookRegisterFunction.thumbnail} value={bookRegisterInfo.thumbnail} />
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>

@@ -11,12 +11,11 @@ const SearchItem = ({isbn, thumbnail, title, authors, price, publisher}) => {
     <div className="book-card-container" key={isbn}>
       <CardImg thumbnail={thumbnail} />
       <div className="book-text">
-      <div className="book-img-link">이미지 주소: {thumbnail}</div>
-        <h2>{title}</h2>
-        <h5>{publisher} / {authors}</h5>
         <div className="book-summary-row">
+          <div className="image-url">image link: {thumbnail}</div>
+          <div className="book-price">{title}</div>
+          <div className="book-publisher">{publisher} / {authors}</div>
         </div>
-        <div className="book-price">{`${price}원`}</div>
       </div>
       <Link to={{
         pathname: `/book/${isbn}`,
