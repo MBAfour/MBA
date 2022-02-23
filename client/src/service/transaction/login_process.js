@@ -1,5 +1,3 @@
-import store from "../../store/store";
-import ACTION from "../../store/actions/action";
 import post_login from "../api/post/post_login";
 import get_userInfo from "../api/get/get_userInfo";
 
@@ -28,18 +26,6 @@ const LoginProcess = (logInInfo) => {
       console.log(res.response.studentId);
       console.log(res.response.phone);
       console.log(res.response.memberAuthority);
-      store.dispatch(
-        ACTION.SET_USER__ACTION_FUNC({
-          user: {
-            email: res.response.email,
-            name: res.response.name,
-            studentId: res.response.studentId,
-            phone: res.response.phone,
-            memberAuthority: res.response.memberAuthority,
-          },
-        })
-      );
-      store.dispatch(ACTION.LOGIN_ACTION_FUNC());
       window.location.reload();
     })
     .catch((err) => console.log(err))
