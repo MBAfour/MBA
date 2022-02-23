@@ -11,14 +11,14 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    url: jdbc:mysql://localhost:3306/mba?serverTimezone=Asia/Seoul # 자신의 url
-    username: root # 자신의 mysql username
-    password: root # 자신의 mysql password
+    #url: jdbc:mysql://localhost:3306/mba?serverTimezone=Asia/Seoul # 자신의 url
+    #username: root # 자신의 mysql username
+    #password: root # 자신의 mysql password
 
     #docker
-    #url: jdbc:mysql://mysql:3306/mba?serverTimezone=UTC&characterEncoding=UTF-8
-    #username: mba
-    #password: mba
+    url: jdbc:mysql://mysql:3306/mba?serverTimezone=UTC&characterEncoding=UTF-8
+    username: mba
+    password: mba
 
 
   jpa:
