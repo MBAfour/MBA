@@ -21,24 +21,7 @@ MBA(Major Book Auction)
     $ cd server
     server$ ./gradlew build
     ```
-# Run
-- 리액트 실행
-    ```shell
-    $ cd client
-    client$ npm start
-    ```
-- 스프링 부트 실행
-    ```shell
-    $ cd server/build/libs
-    server/build/libs$ java -jar mba-0.0.1-SNAPSHOT.jar
-    ```
-- 카프카 실행
-    ```shell
-    zookeeper-server-start.bat ..\..\config\zookeeper.properties
-    ```
-    ```shell
-    kafka-server-start.bat ..\..\config\server.properties
-    ```
+    
 # Usage
 - 도커 이미지 빌드 및 컨테이너 실행
     ```shell
